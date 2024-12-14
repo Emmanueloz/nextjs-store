@@ -1,20 +1,17 @@
-interface CategoryParams {
-  categories: string[];
-}
-
-export default async function Page({
-  params,
-  searchParams,
-}: {
-  params: Promise<CategoryParams>;
+interface CategoryProps {
+  params: Promise<{
+    categories: string[];
+  }>;
   searchParams: Promise<{
     [key: string]: string | string[] | undefined;
   }>;
-}) {
+}
+
+export default async function Category({
+  params,
+  searchParams,
+}: CategoryProps) {
   const categories = (await params).categories;
-  const search = await searchParams;
-  console.log(categories);
-  console.log(search);
 
   return (
     <>
